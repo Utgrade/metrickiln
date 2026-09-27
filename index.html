@@ -3,50 +3,386 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>MetricKiln — PMO Control Center for Power BI</title>
   <meta name="description" content="PMO Control Center for Power BI — a ready-to-use PMO dashboard with Excel inputs for projects, milestones, risks, actions and budget. Launch price: $49.">
+
+  <meta property="og:title" content="PMO Control Center for Power BI — MetricKiln">
+  <meta property="og:description" content="A ready-to-use Power BI PMO dashboard with Excel inputs. Launch price: $49.">
+  <meta property="og:image" content="assets/01-executive-overview.png">
+  <meta property="og:type" content="website">
+
   <style>
-    :root{--bg:#f7f7f5;--card:#fff;--text:#171717;--muted:#666;--line:#e7e7e2;--accent:#111}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
-    a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
-    header{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
-    .brand{font-weight:850;letter-spacing:-.03em;font-size:1.25rem}
-    .nav{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:.95rem}.nav a{text-decoration:none}
-    .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;padding:62px 0 56px}
-    .eyebrow{display:inline-block;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font-size:.88rem;margin-bottom:18px}
-    h1{margin:0 0 18px;font-size:clamp(2.7rem,6vw,5.3rem);line-height:.98;letter-spacing:-.055em}
-    .lead{margin:0 0 24px;max-width:690px;color:var(--muted);font-size:1.18rem}
-    .price-row{display:flex;align-items:baseline;gap:12px;margin:24px 0 18px}
-    .price{font-size:2rem;font-weight:850;letter-spacing:-.03em}.price-note{color:var(--muted);font-size:.95rem}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .button{display:inline-block;text-decoration:none;border-radius:10px;padding:13px 17px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-weight:760;cursor:pointer}
-    .button.secondary{background:transparent;color:var(--accent);border-color:var(--line)}
-    .preview{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:0 18px 60px rgba(0,0,0,.07)}
-    .preview img{width:100%;height:auto;display:block;border-radius:10px}
-    .section{padding:54px 0}.section h2{margin:0 0 12px;font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.04em}
-    .section-intro{margin:0 0 28px;color:var(--muted);max-width:760px;font-size:1.07rem}
-    .grid{display:grid;gap:16px}.benefits,.pages{grid-template-columns:repeat(5,1fr)}.included{grid-template-columns:repeat(2,1fr)}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}.card strong{display:block;margin-bottom:7px;font-size:1.03rem}.card span,.card p{color:var(--muted);margin:0}
-    .list-card ul{margin:0;padding-left:1.2rem}.list-card li{margin:8px 0}
-    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step}.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-    .step::before{counter-increment:step;content:counter(step);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;margin-bottom:14px}
-    .cta{margin:54px 0 64px;background:var(--accent);color:#fff;border-radius:22px;padding:42px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
-    .cta h2{margin:0 0 10px;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em}.cta p{margin:0;color:#d8d8d8;max-width:720px}.cta .button{background:#fff;color:var(--accent);border-color:#fff;white-space:nowrap}
-    .status-note{margin-top:12px;color:var(--muted);font-size:.9rem}
-    footer{border-top:1px solid var(--line);padding:26px 0 42px;color:var(--muted);font-size:.9rem}
-    .footer-row{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}.footer-links{display:flex;flex-wrap:wrap;gap:16px}
-    @media(max-width:980px){.hero{grid-template-columns:1fr}.benefits,.pages{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.cta{grid-template-columns:1fr}}
-    @media(max-width:640px){.wrap{width:min(100% - 28px,1120px)}.nav{display:none}.hero{padding-top:36px}.benefits,.pages,.included,.steps{grid-template-columns:1fr}.cta{padding:28px}}
+    :root {
+      --bg:#f7f7f5;
+      --card:#ffffff;
+      --text:#171717;
+      --muted:#686868;
+      --line:#e7e7e2;
+      --accent:#111111;
+      --soft:#efefeb;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a { color:inherit; }
+    img { max-width:100%; }
+
+    .wrap {
+      width:min(1160px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:24px 0;
+    }
+
+    .brand {
+      font-weight:850;
+      letter-spacing:-.03em;
+      font-size:1.25rem;
+    }
+
+    .nav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .nav a { text-decoration:none; }
+
+    .hero {
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:48px;
+      align-items:center;
+      padding:62px 0 58px;
+    }
+
+    .eyebrow {
+      display:inline-block;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--card);
+      color:var(--muted);
+      font-size:.88rem;
+      margin-bottom:18px;
+    }
+
+    h1 {
+      margin:0 0 18px;
+      font-size:clamp(2.8rem,6vw,5.5rem);
+      line-height:.97;
+      letter-spacing:-.06em;
+    }
+
+    h2 {
+      margin:0 0 12px;
+      font-size:clamp(2rem,4vw,3.15rem);
+      letter-spacing:-.04em;
+      line-height:1.05;
+    }
+
+    h3 { margin:0 0 8px; }
+
+    .lead {
+      margin:0 0 24px;
+      max-width:720px;
+      color:var(--muted);
+      font-size:1.18rem;
+    }
+
+    .price-row {
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      margin:24px 0 18px;
+    }
+
+    .price {
+      font-size:2rem;
+      font-weight:850;
+      letter-spacing:-.03em;
+    }
+
+    .price-note {
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .button {
+      display:inline-block;
+      text-decoration:none;
+      border-radius:10px;
+      padding:13px 17px;
+      border:1px solid var(--accent);
+      background:var(--accent);
+      color:#fff;
+      font-weight:760;
+      cursor:pointer;
+    }
+
+    .button.secondary {
+      background:transparent;
+      color:var(--accent);
+      border-color:var(--line);
+    }
+
+    .preview {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px;
+      box-shadow:0 18px 60px rgba(0,0,0,.07);
+    }
+
+    .preview img {
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:10px;
+    }
+
+    .status-note {
+      margin-top:12px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .section { padding:56px 0; }
+
+    .section-intro {
+      margin:0 0 28px;
+      color:var(--muted);
+      max-width:780px;
+      font-size:1.07rem;
+    }
+
+    .grid {
+      display:grid;
+      gap:16px;
+    }
+
+    .benefits { grid-template-columns:repeat(5,1fr); }
+    .included { grid-template-columns:repeat(2,1fr); }
+    .requirements { grid-template-columns:repeat(3,1fr); }
+
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:22px;
+    }
+
+    .card strong {
+      display:block;
+      margin-bottom:7px;
+      font-size:1.03rem;
+    }
+
+    .card span,
+    .card p {
+      color:var(--muted);
+      margin:0;
+    }
+
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .shot {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+    }
+
+    .shot img {
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:10px;
+    }
+
+    .shot figcaption {
+      padding:10px 4px 2px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .shot.hero-shot { grid-column:1 / -1; }
+
+    .list-card ul {
+      margin:0;
+      padding-left:1.2rem;
+    }
+
+    .list-card li { margin:8px 0; }
+
+    .steps {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+      counter-reset:step;
+    }
+
+    .step {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px;
+    }
+
+    .step::before {
+      counter-increment:step;
+      content:counter(step);
+      display:inline-grid;
+      place-items:center;
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#fff;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    details {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px 20px;
+    }
+
+    details + details { margin-top:10px; }
+
+    summary {
+      cursor:pointer;
+      font-weight:760;
+    }
+
+    details p {
+      margin:12px 0 0;
+      color:var(--muted);
+    }
+
+    .support-box {
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:20px;
+      align-items:center;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:26px;
+    }
+
+    .support-box p {
+      margin:6px 0 0;
+      color:var(--muted);
+    }
+
+    .cta {
+      margin:56px 0 64px;
+      background:var(--accent);
+      color:#fff;
+      border-radius:22px;
+      padding:42px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:28px;
+      align-items:center;
+    }
+
+    .cta h2 { margin-bottom:10px; }
+    .cta p {
+      margin:0;
+      color:#d8d8d8;
+      max-width:720px;
+    }
+
+    .cta .button {
+      background:#fff;
+      color:var(--accent);
+      border-color:#fff;
+      white-space:nowrap;
+    }
+
+    footer {
+      border-top:1px solid var(--line);
+      padding:26px 0 42px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .footer-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .footer-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    @media(max-width:980px) {
+      .hero { grid-template-columns:1fr; }
+      .benefits { grid-template-columns:repeat(2,1fr); }
+      .requirements { grid-template-columns:1fr; }
+      .steps { grid-template-columns:repeat(2,1fr); }
+      .cta, .support-box { grid-template-columns:1fr; }
+    }
+
+    @media(max-width:700px) {
+      .wrap { width:min(100% - 28px,1160px); }
+      .nav { display:none; }
+      .hero { padding-top:36px; }
+      .benefits,.included,.steps,.gallery { grid-template-columns:1fr; }
+      .shot.hero-shot { grid-column:auto; }
+      .cta { padding:28px; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="brand">MetricKiln</div>
+
       <nav class="nav">
         <a href="#product">Product</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#included">What's included</a>
+        <a href="#faq">FAQ</a>
         <a href="license.html">License</a>
       </nav>
     </header>
@@ -55,27 +391,42 @@
       <section class="hero" id="product">
         <div>
           <div class="eyebrow">Power BI template · One-time purchase</div>
+
           <h1>PMO reporting, ready to use.</h1>
-          <p class="lead">PMO Control Center turns a simple Excel workbook into a clear Power BI view of projects, milestones, risks, actions and budget — without rebuilding a PMO model from scratch.</p>
+
+          <p class="lead">
+            PMO Control Center turns a simple Excel workbook into a clear Power BI view of projects,
+            milestones, risks, actions and budget — without rebuilding a PMO model from scratch.
+          </p>
+
           <div class="price-row">
             <div class="price">$49</div>
             <div class="price-note">launch price · one-time purchase</div>
           </div>
+
           <div class="actions">
-            <a class="button js-buy" href="#" data-checkout-url="LIVE_CHECKOUT_URL">Buy PMO Control Center — $49</a>
-            <a class="button secondary" href="#included">See what's included</a>
+            <a class="button js-buy" href="#" data-checkout-url="LIVE_CHECKOUT_URL">
+              Buy PMO Control Center — $49
+            </a>
+            <a class="button secondary" href="#screenshots">See the dashboard</a>
           </div>
-          <div class="status-note" id="checkout-status">Checkout will open as soon as the MetricKiln store is approved.</div>
+
+          <div class="status-note" id="checkout-status">
+            Checkout will open as soon as the MetricKiln store is approved.
+          </div>
         </div>
 
         <div class="preview">
-          <img src="assets/pmo-control-center-executive-overview.png" alt="PMO Control Center for Power BI executive overview dashboard">
+          <img src="assets/01-executive-overview.png" alt="PMO Control Center Power BI executive overview dashboard">
         </div>
       </section>
 
       <section class="section">
         <h2>Built for practical PMO visibility.</h2>
-        <p class="section-intro">A focused reporting foundation for PMO teams, portfolio managers, project managers and steering committees.</p>
+        <p class="section-intro">
+          A focused reporting foundation for PMO teams, portfolio managers, project managers and steering committees.
+        </p>
+
         <div class="grid benefits">
           <div class="card"><strong>Portfolio status</strong><span>Review project count, status, progress, ownership and planned dates.</span></div>
           <div class="card"><strong>Milestones</strong><span>Track planned milestones, completed milestones and overdue items.</span></div>
@@ -85,21 +436,46 @@
         </div>
       </section>
 
-      <section class="section">
-        <h2>5 dashboard pages.</h2>
-        <p class="section-intro">From executive visibility to detailed operational follow-up.</p>
-        <div class="grid pages">
-          <div class="card"><strong>Executive Overview</strong><span>Portfolio KPIs and key exceptions in one view.</span></div>
-          <div class="card"><strong>Portfolio</strong><span>Project status, progress, ownership and dates.</span></div>
-          <div class="card"><strong>Milestones</strong><span>Monthly planning, status and overdue tracking.</span></div>
-          <div class="card"><strong>Risks & Actions</strong><span>Exposure, priority, actions and overdue follow-up.</span></div>
-          <div class="card"><strong>Budget</strong><span>Plan, actuals, forecast and project-level variances.</span></div>
+      <section class="section" id="screenshots">
+        <h2>See the full dashboard.</h2>
+        <p class="section-intro">
+          Five focused pages cover executive reporting, portfolio monitoring and day-to-day PMO follow-up.
+        </p>
+
+        <div class="gallery">
+          <figure class="shot hero-shot">
+            <img src="assets/01-executive-overview.png" alt="Executive Overview">
+            <figcaption>Executive Overview — portfolio KPIs, exceptions, progress and budget.</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="assets/02-portfolio.png" alt="Portfolio page">
+            <figcaption>Portfolio — project status, progress, ownership and planned dates.</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="assets/03-risks-actions.png" alt="Risks and Actions page">
+            <figcaption>Risks & Actions — critical exposure, priority and overdue follow-up.</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="assets/04-budget.png" alt="Budget page">
+            <figcaption>Budget — plan, actual spend, forecast and project-level variances.</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="assets/05-milestones.png" alt="Milestones page">
+            <figcaption>Milestones — planned timeline, completion status and overdue milestones.</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section" id="included">
         <h2>Everything you need to get started.</h2>
-        <p class="section-intro">The download includes the Power BI template, clean and demo Excel workbooks, plus the documentation required to understand the data structure and first-use workflow.</p>
+        <p class="section-intro">
+          The download includes the Power BI template, clean and demo Excel workbooks, plus the documentation required to understand the data structure and first-use workflow.
+        </p>
+
         <div class="grid included">
           <div class="card list-card">
             <strong>Core product</strong>
@@ -109,6 +485,7 @@
               <li>PMO-Control-Center-Demo.xlsx</li>
             </ul>
           </div>
+
           <div class="card list-card">
             <strong>Documentation</strong>
             <ul>
@@ -124,9 +501,12 @@
 
       <section class="section">
         <h2>Simple workflow.</h2>
-        <p class="section-intro">The packaged workflow uses Excel input files and Power BI Desktop.</p>
+        <p class="section-intro">
+          The packaged workflow uses Excel input files and Power BI Desktop.
+        </p>
+
         <div class="steps">
-          <div class="step"><strong>Fill the workbook</strong><p>Enter your project portfolio data using the provided structure.</p></div>
+          <div class="step"><strong>Fill the workbook</strong><p>Enter your portfolio data using the provided Excel structure.</p></div>
           <div class="step"><strong>Open the template</strong><p>Launch the supplied Power BI template.</p></div>
           <div class="step"><strong>Set DataFilePath</strong><p>Point the template to your Excel workbook.</p></div>
           <div class="step"><strong>Refresh</strong><p>Load the data into the prepared model and report.</p></div>
@@ -135,8 +515,35 @@
       </section>
 
       <section class="section">
+        <h2>Requirements.</h2>
+        <p class="section-intro">
+          PMO Control Center is designed as a straightforward desktop template workflow.
+        </p>
+
+        <div class="grid requirements">
+          <div class="card">
+            <strong>Power BI Desktop</strong>
+            <span>Required to open, refresh and customize the supplied .pbit template.</span>
+          </div>
+
+          <div class="card">
+            <strong>Excel-compatible .xlsx editing</strong>
+            <span>Use Microsoft Excel or another compatible application to maintain the input workbook.</span>
+          </div>
+
+          <div class="card">
+            <strong>Basic Power BI familiarity</strong>
+            <span>You should be comfortable opening a template, setting a parameter and refreshing a report.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>Clear scope, no hidden claims.</h2>
-        <p class="section-intro">PMO Control Center V0 focuses on practical Excel-to-Power-BI portfolio reporting.</p>
+        <p class="section-intro">
+          PMO Control Center V0 focuses on practical Excel-to-Power-BI portfolio reporting.
+        </p>
+
         <div class="card list-card">
           <strong>This version does not include</strong>
           <ul>
@@ -151,11 +558,53 @@
         </div>
       </section>
 
+      <section class="section" id="faq">
+        <h2>Frequently asked questions.</h2>
+
+        <details>
+          <summary>Can I use my own project data?</summary>
+          <p>Yes. Use the provided Excel input workbook as the structure for your own projects, milestones, risks, issues, actions and budget data.</p>
+        </details>
+
+        <details>
+          <summary>Do I need to rebuild the Power BI model?</summary>
+          <p>No. The package includes a reusable Power BI template with the semantic model, measures, relationships and report pages already prepared.</p>
+        </details>
+
+        <details>
+          <summary>Is demo data included?</summary>
+          <p>Yes. A populated demo workbook is included so you can explore the dashboard before loading your own data.</p>
+        </details>
+
+        <details>
+          <summary>Can I customize the report?</summary>
+          <p>Yes. You can adapt the Power BI template for your own internal reporting needs, subject to the product license.</p>
+        </details>
+
+        <details>
+          <summary>Does the product include Power BI Service deployment?</summary>
+          <p>No. Power BI Service publishing, workspace setup, gateways and organizational deployment are outside the scope of this version.</p>
+        </details>
+      </section>
+
+      <section class="section">
+        <div class="support-box">
+          <div>
+            <h3>Questions before or after purchase?</h3>
+            <p>Contact MetricKiln for product and licensing questions. Custom Power BI implementation is not included with the product.</p>
+          </div>
+          <a class="button secondary" href="mailto:metrickiln@outlook.com">metrickiln@outlook.com</a>
+        </div>
+      </section>
+
       <section class="cta">
         <div>
           <h2>Start with a working PMO reporting foundation.</h2>
-          <p>One-time purchase. Download the template, Excel workbooks and documentation from your Lemon Squeezy order.</p>
+          <p>
+            One-time purchase. Download the template, Excel workbooks and documentation from your Lemon Squeezy order.
+          </p>
         </div>
+
         <a class="button js-buy" href="#" data-checkout-url="LIVE_CHECKOUT_URL">Buy for $49</a>
       </section>
     </main>
@@ -163,12 +612,17 @@
     <footer>
       <div class="footer-row">
         <div>© 2026 MetricKiln</div>
+
         <div class="footer-links">
           <a href="license.html">License Terms</a>
           <a href="mailto:metrickiln@outlook.com">Contact</a>
         </div>
       </div>
-      <p>Microsoft, Power BI and Excel are trademarks of the Microsoft group of companies. MetricKiln is not affiliated with or endorsed by Microsoft.</p>
+
+      <p>
+        Microsoft, Power BI and Excel are trademarks of the Microsoft group of companies.
+        MetricKiln is not affiliated with or endorsed by Microsoft.
+      </p>
     </footer>
   </div>
 
@@ -176,13 +630,18 @@
     document.querySelectorAll(".js-buy").forEach(function(button) {
       button.addEventListener("click", function(event) {
         const url = button.getAttribute("data-checkout-url");
+
         if (!url || url === "LIVE_CHECKOUT_URL") {
           event.preventDefault();
           document.getElementById("checkout-status").textContent =
             "Checkout will open as soon as the MetricKiln store is approved.";
-          document.getElementById("checkout-status").scrollIntoView({behavior:"smooth",block:"center"});
+          document.getElementById("checkout-status").scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+          });
           return;
         }
+
         event.preventDefault();
         window.location.href = url;
       });
