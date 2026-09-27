@@ -4,13 +4,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MetricKiln — PMO Control Center for Power BI</title>
-  <meta name="description" content="PMO Control Center for Power BI — a ready-to-use PMO dashboard with Excel inputs for projects, milestones, risks, actions and budget. Launch price: $49.">
+  <title>Power BI PMO Dashboard Template | PMO Control Center | MetricKiln</title>
+  <meta name="description" content="Ready-to-use Power BI PMO dashboard template with Excel inputs for project portfolio, milestones, risks, actions and budget reporting. Launch price $49.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="MetricKiln">
 
-  <meta property="og:title" content="PMO Control Center for Power BI — MetricKiln">
-  <meta property="og:description" content="A ready-to-use Power BI PMO dashboard with Excel inputs. Launch price: $49.">
-  <meta property="og:image" content="assets/01-executive-overview.png">
+  <link rel="canonical" href="https://utgrade.github.io/metrickiln/">
+
+  <meta property="og:site_name" content="MetricKiln">
+  <meta property="og:title" content="Power BI PMO Dashboard Template — PMO Control Center">
+  <meta property="og:description" content="Turn a structured Excel workbook into clear Power BI portfolio reporting for projects, milestones, risks, actions and budget.">
+  <meta property="og:image" content="https://utgrade.github.io/metrickiln/assets/01-executive-overview.png">
+  <meta property="og:image:width" content="2767">
+  <meta property="og:image:height" content="1600">
+  <meta property="og:image:alt" content="PMO Control Center Power BI executive overview dashboard">
+  <meta property="og:url" content="https://utgrade.github.io/metrickiln/">
   <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Power BI PMO Dashboard Template — PMO Control Center">
+  <meta name="twitter:description" content="A ready-to-use Power BI PMO reporting foundation with structured Excel inputs.">
+  <meta name="twitter:image" content="https://utgrade.github.io/metrickiln/assets/01-executive-overview.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "PMO Control Center for Power BI",
+    "url": "https://utgrade.github.io/metrickiln/",
+    "description": "A ready-to-use Power BI PMO dashboard template with structured Excel inputs for project portfolio, milestones, risks, issues, actions, budget and forecast reporting.",
+    "image": [
+      "https://utgrade.github.io/metrickiln/assets/01-executive-overview.png",
+      "https://utgrade.github.io/metrickiln/assets/02-portfolio.png",
+      "https://utgrade.github.io/metrickiln/assets/03-risks-actions.png",
+      "https://utgrade.github.io/metrickiln/assets/04-budget.png",
+      "https://utgrade.github.io/metrickiln/assets/05-milestones.png"
+    ],
+    "brand": {
+      "@type": "Brand",
+      "name": "MetricKiln"
+    },
+    "category": "Power BI PMO dashboard template",
+    "sku": "PMO-CONTROL-CENTER-V0"
+  }
+  </script>
 
   <style>
     :root {
@@ -87,9 +124,9 @@
 
     h1 {
       margin:0 0 18px;
-      font-size:clamp(2.8rem,6vw,5.5rem);
-      line-height:.97;
-      letter-spacing:-.06em;
+      font-size:clamp(2.8rem,6vw,5.25rem);
+      line-height:.98;
+      letter-spacing:-.055em;
     }
 
     h2 {
@@ -177,9 +214,18 @@
     .section-intro {
       margin:0 0 28px;
       color:var(--muted);
-      max-width:780px;
+      max-width:800px;
       font-size:1.07rem;
     }
+
+    .seo-copy {
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .seo-copy .card p + p { margin-top:12px; }
 
     .grid {
       display:grid;
@@ -355,7 +401,7 @@
     }
 
     @media(max-width:980px) {
-      .hero { grid-template-columns:1fr; }
+      .hero,.seo-copy { grid-template-columns:1fr; }
       .benefits { grid-template-columns:repeat(2,1fr); }
       .requirements { grid-template-columns:1fr; }
       .steps { grid-template-columns:repeat(2,1fr); }
@@ -378,7 +424,7 @@
     <header>
       <div class="brand">MetricKiln</div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a href="#product">Product</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#included">What's included</a>
@@ -390,13 +436,13 @@
     <main>
       <section class="hero" id="product">
         <div>
-          <div class="eyebrow">Power BI template · One-time purchase</div>
+          <div class="eyebrow">Power BI PMO dashboard template · One-time purchase</div>
 
-          <h1>PMO reporting, ready to use.</h1>
+          <h1>PMO reporting in Power BI, ready to use.</h1>
 
           <p class="lead">
-            PMO Control Center turns a simple Excel workbook into a clear Power BI view of projects,
-            milestones, risks, actions and budget — without rebuilding a PMO model from scratch.
+            PMO Control Center turns a structured Excel workbook into a clear project portfolio dashboard
+            for projects, milestones, risks, actions and budget — without rebuilding a PMO reporting model from scratch.
           </p>
 
           <div class="price-row">
@@ -411,20 +457,50 @@
             <a class="button secondary" href="#screenshots">See the dashboard</a>
           </div>
 
-          <div class="status-note" id="checkout-status">
+          <div class="status-note" id="checkout-status" aria-live="polite">
             Checkout will open as soon as the MetricKiln store is approved.
           </div>
         </div>
 
         <div class="preview">
-          <img src="assets/01-executive-overview.png" alt="PMO Control Center Power BI executive overview dashboard">
+          <img
+            src="assets/01-executive-overview.png"
+            alt="Power BI PMO dashboard template showing executive project portfolio KPIs, risks, milestones and budget"
+            width="2767"
+            height="1600"
+            fetchpriority="high"
+            decoding="async">
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="seo-copy">
+          <div class="card">
+            <h2>A Power BI PMO dashboard template for project portfolio reporting.</h2>
+            <p>
+              PMO Control Center is a reusable reporting foundation for PMO teams that need portfolio visibility
+              without designing the semantic model, measures and report pages from zero.
+            </p>
+            <p>
+              Maintain the supplied Excel structure, refresh the Power BI template and use five focused pages
+              for executive reporting and operational follow-up.
+            </p>
+          </div>
+
+          <div class="card">
+            <strong>Designed for</strong>
+            <p>
+              PMO teams, portfolio managers, transformation teams, project managers and organizations that
+              currently consolidate project reporting in Excel and want a structured Power BI starting point.
+            </p>
+          </div>
         </div>
       </section>
 
       <section class="section">
         <h2>Built for practical PMO visibility.</h2>
         <p class="section-intro">
-          A focused reporting foundation for PMO teams, portfolio managers, project managers and steering committees.
+          Track the core information needed for project portfolio reporting in Power BI, from high-level status to exceptions and financial follow-up.
         </p>
 
         <div class="grid benefits">
@@ -437,34 +513,49 @@
       </section>
 
       <section class="section" id="screenshots">
-        <h2>See the full dashboard.</h2>
+        <h2>Five focused Power BI PMO dashboard pages.</h2>
         <p class="section-intro">
-          Five focused pages cover executive reporting, portfolio monitoring and day-to-day PMO follow-up.
+          See the actual V0 report pages for executive overview, portfolio monitoring, milestones, risks and actions, and budget reporting.
         </p>
 
         <div class="gallery">
           <figure class="shot hero-shot">
-            <img src="assets/01-executive-overview.png" alt="Executive Overview">
+            <img
+              src="assets/01-executive-overview.png"
+              alt="Executive Overview page of the Power BI PMO dashboard template"
+              width="2767" height="1600" loading="lazy" decoding="async">
             <figcaption>Executive Overview — portfolio KPIs, exceptions, progress and budget.</figcaption>
           </figure>
 
           <figure class="shot">
-            <img src="assets/02-portfolio.png" alt="Portfolio page">
+            <img
+              src="assets/02-portfolio.png"
+              alt="Power BI project portfolio dashboard with project status, progress, ownership and planned dates"
+              width="2767" height="1600" loading="lazy" decoding="async">
             <figcaption>Portfolio — project status, progress, ownership and planned dates.</figcaption>
           </figure>
 
           <figure class="shot">
-            <img src="assets/03-risks-actions.png" alt="Risks and Actions page">
+            <img
+              src="assets/03-risks-actions.png"
+              alt="Power BI PMO risks and actions dashboard with priority, owners and overdue follow-up"
+              width="2767" height="1600" loading="lazy" decoding="async">
             <figcaption>Risks & Actions — critical exposure, priority and overdue follow-up.</figcaption>
           </figure>
 
           <figure class="shot">
-            <img src="assets/04-budget.png" alt="Budget page">
+            <img
+              src="assets/04-budget.png"
+              alt="Power BI PMO budget dashboard comparing plan, actual spend, forecast and variance"
+              width="2767" height="1600" loading="lazy" decoding="async">
             <figcaption>Budget — plan, actual spend, forecast and project-level variances.</figcaption>
           </figure>
 
           <figure class="shot">
-            <img src="assets/05-milestones.png" alt="Milestones page">
+            <img
+              src="assets/05-milestones.png"
+              alt="Power BI PMO milestone dashboard showing timeline, completion status and overdue milestones"
+              width="2767" height="1600" loading="lazy" decoding="async">
             <figcaption>Milestones — planned timeline, completion status and overdue milestones.</figcaption>
           </figure>
         </div>
@@ -500,9 +591,9 @@
       </section>
 
       <section class="section">
-        <h2>Simple workflow.</h2>
+        <h2>From Excel to Power BI in five steps.</h2>
         <p class="section-intro">
-          The packaged workflow uses Excel input files and Power BI Desktop.
+          The packaged workflow uses a structured Excel input file and Power BI Desktop.
         </p>
 
         <div class="steps">
@@ -562,6 +653,11 @@
         <h2>Frequently asked questions.</h2>
 
         <details>
+          <summary>What is PMO Control Center?</summary>
+          <p>PMO Control Center is a ready-to-use Power BI PMO dashboard template that uses a structured Excel workbook as its input source.</p>
+        </details>
+
+        <details>
           <summary>Can I use my own project data?</summary>
           <p>Yes. Use the provided Excel input workbook as the structure for your own projects, milestones, risks, issues, actions and budget data.</p>
         </details>
@@ -599,7 +695,7 @@
 
       <section class="cta">
         <div>
-          <h2>Start with a working PMO reporting foundation.</h2>
+          <h2>Start with a working Power BI PMO reporting foundation.</h2>
           <p>
             One-time purchase. Download the template, Excel workbooks and documentation from your Lemon Squeezy order.
           </p>
@@ -633,12 +729,9 @@
 
         if (!url || url === "LIVE_CHECKOUT_URL") {
           event.preventDefault();
-          document.getElementById("checkout-status").textContent =
-            "Checkout will open as soon as the MetricKiln store is approved.";
-          document.getElementById("checkout-status").scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-          });
+          const status = document.getElementById("checkout-status");
+          status.textContent = "Checkout will open as soon as the MetricKiln store is approved.";
+          status.scrollIntoView({ behavior:"smooth", block:"center" });
           return;
         }
 
