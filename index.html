@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MetricKiln — Ready-to-use analytics products</title>
+  <meta name="description" content="MetricKiln creates ready-to-use analytics products. PMO Control Center for Power BI is launching soon.">
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #171717;
+      --muted: #686868;
+      --line: #e7e7e2;
+      --accent: #111111;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 24px 64px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0 56px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.25rem;
+    }
+    .badge {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 44px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 6vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -0.055em;
+    }
+    .lead {
+      max-width: 700px;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 26px;
+    }
+    .product-name {
+      font-weight: 750;
+      margin-bottom: 8px;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .button {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--accent);
+      color: white;
+      background: var(--accent);
+    }
+    .button.secondary {
+      color: var(--accent);
+      background: transparent;
+      border-color: var(--line);
+    }
+    .preview {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 16px 60px rgba(0,0,0,.06);
+    }
+    .preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0 52px;
+    }
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .feature strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 1.05rem;
+    }
+    .feature span { color: var(--muted); }
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    @media (max-width: 820px) {
+      header { padding-bottom: 32px; }
+      .hero { grid-template-columns: 1fr; gap: 30px; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">MetricKiln</div>
+      <div class="badge">Launching soon</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Ready-to-use analytics products.</h1>
+          <p class="lead">
+            Practical reporting products designed to help teams move from structured business data
+            to clear decision-ready dashboards faster.
+          </p>
+
+          <div class="product-name">PMO Control Center for Power BI</div>
+          <p class="lead">
+            Turn a simple Excel workbook into a clear executive view of projects, milestones,
+            risks, actions and budget.
+          </p>
+
+          <div class="actions">
+            <a class="button" href="#product">View the product</a>
+            <a class="button secondary" href="mailto:metrickiln@outlook.com">Contact</a>
+          </div>
+        </div>
+
+        <div class="preview" id="product">
+          <img src="assets/pmo-control-center-executive-overview.png"
+               alt="PMO Control Center Power BI executive overview dashboard">
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">
+          <strong>5 dashboard pages</strong>
+          <span>Executive Overview, Portfolio, Milestones, Risks & Actions, and Budget.</span>
+        </div>
+        <div class="feature">
+          <strong>Simple Excel input</strong>
+          <span>Use the provided workbook structure and refresh the reusable Power BI template.</span>
+        </div>
+        <div class="feature">
+          <strong>Built for PMO reporting</strong>
+          <span>Track portfolio progress, milestones, risks, actions, spend and forecast variance.</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 MetricKiln. PMO Control Center for Power BI is launching soon.
+    </footer>
+  </div>
+</body>
+</html>
